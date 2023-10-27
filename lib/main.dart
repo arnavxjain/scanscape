@@ -6,7 +6,7 @@ void main() {
 
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark.copyWith(
     // statusBarColor: Colors.blueAccent, // Color for Android
-      statusBarBrightness: Brightness.dark // Dark == white status bar -- for IOS.
+      statusBarBrightness: Brightness.light // Dark == white status bar -- for IOS.
   ));
 
   runApp(const MaterialApp(
