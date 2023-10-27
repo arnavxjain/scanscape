@@ -1,8 +1,13 @@
+import 'dart:ui';
+import 'dart:io';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:slide_action/slide_action.dart';
 import 'package:figma_squircle/figma_squircle.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:camera/camera.dart';
+import 'package:scanscape/screens/camera.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -12,8 +17,6 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-
-  File ? _selectedImage;
 
   @override
   Widget build(BuildContext context) {
@@ -37,6 +40,7 @@ class _HomeState extends State<Home> {
               ),
             ),
             Expanded(child: SizedBox(height: 1)),
+            // _selectedImage != null ? Image.file(_selectedImage!) : const Text("select an image"),
             SlideAction(
               trackHeight: 62,
                 trackBuilder: (context, state) {
@@ -103,17 +107,26 @@ class _HomeState extends State<Home> {
                     ),
                   );
                 },
-                action: () {
-                  print("swiped.");
-                }
-            )
+                action: () async {
+                  await availableCameras().then((value) => Navigator.push(context,
+                      MaterialPageRoute(builder: (_) => Camera(cameras: value))));
+                },
+            ),
           ],
         ),
       )
     );
   }
 
-  Future _selectImageFromPhotos() async {
-    final returnedImage = await ImagePicker().pickImage(source: ImageSource.gallery);
+  // Future _selectImageFromPhotos() async {
+  //   final returnedImage = await ImagePicker().pickImage(source: ImageSource.gallery);
+  //
+  //   setState(() {
+  //     _selectedImage = File(returnedImage!.path);
+  //   });
+  // }
+
+  _getCameras() async {
+    final cameras = await availableCameras();
   }
 }
