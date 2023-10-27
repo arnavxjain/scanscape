@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:slide_action/slide_action.dart';
+import 'package:figma_squircle/figma_squircle.dart';
+import 'package:image_picker/image_picker.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -10,6 +12,9 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+
+  File ? _selectedImage;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,7 +43,7 @@ class _HomeState extends State<Home> {
                   return Container(
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(100),
-                      color: Color(0xFF5AEC95),
+                      color: Color(0xFF47D982),
                       border: Border.all(color: Colors.grey.withOpacity(0.3))
                     ),
                     child: Center(
@@ -49,7 +54,7 @@ class _HomeState extends State<Home> {
                           color: Color(0xFF111111),
                           fontWeight: FontWeight.w500,
                           letterSpacing: -0.5,
-                          fontSize: 16
+                          fontSize: 17
                         ),
                       ),
                     ),
@@ -98,11 +103,17 @@ class _HomeState extends State<Home> {
                     ),
                   );
                 },
-                action: () {}
+                action: () {
+                  print("swiped.");
+                }
             )
           ],
         ),
       )
     );
+  }
+
+  Future _selectImageFromPhotos() async {
+    final returnedImage = await ImagePicker().pickImage(source: ImageSource.gallery);
   }
 }

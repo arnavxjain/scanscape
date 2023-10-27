@@ -37,6 +37,8 @@ dependencies:
   cupertino_icons: ^1.0.2
   figma_squircle: ^0.5.3
   slide_action: ^0.0.2
+  camera: ^0.10.5+5
+  image_picker: ^1.0.4
 
 dev_dependencies:
   flutter_test:
