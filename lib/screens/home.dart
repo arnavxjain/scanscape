@@ -31,12 +31,32 @@ class _HomeState extends State<Home> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text("Scanscape", style: TextStyle(color: Colors.black, fontSize: 24, fontWeight: FontWeight.w700, letterSpacing: -1),),
-                  CupertinoButton(
+                  SizedBox(
+                    width: 22,
+                    child: CupertinoButton(
                       child: Icon(CupertinoIcons.info_circle, color: Colors.blueAccent, size: 24,),
                       onPressed: () {},
-                    padding: EdgeInsets.zero,
+                      padding: EdgeInsets.zero,
+                    ),
                   )
                 ],
+              ),
+            ),
+            Container(
+              margin: EdgeInsets.only(top: 10),
+              width: MediaQuery.of(context).size.width-45,
+              height: 150,
+              decoration: ShapeDecoration(
+                  shape: SmoothRectangleBorder(
+                    borderRadius: SmoothBorderRadius(
+                      cornerRadius: 20,
+                      cornerSmoothing: 0.8,
+                    ),
+                  ),
+                image: DecorationImage(
+                  image: AssetImage("lib/assets/home_display.png"),
+                  fit: BoxFit.cover
+                )
               ),
             ),
             Expanded(child: SizedBox(height: 1)),
