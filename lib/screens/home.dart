@@ -107,10 +107,7 @@ class _HomeState extends State<Home> {
                     ),
                   );
                 },
-                action: () async {
-                  await availableCameras().then((value) => Navigator.push(context,
-                      MaterialPageRoute(builder: (_) => Camera(cameras: value))));
-                },
+                action: () {},
             ),
           ],
         ),
